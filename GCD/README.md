@@ -1,9 +1,11 @@
 ###一、Dispatch Queue 概念
 Dispatch Queue 是执行处理的等待队列。可以将想执行的处理追加到 Dispatch Queue 中，Dispatch Queue 按照追加的顺序（FIFO）执行处理。
-![image](https://github.com/ShengQiangLiu/iOS-MultiThread/blob/master/psb.jpg)
 ###二、两种 Dispatch Queue 
 Serial Dispatch Queue 串行分发队列
 Concurrent Dispatch Queue 并行分发队列
+
+![image](https://github.com/ShengQiangLiu/iOS-MultiThread/blob/master/O2O.jpg)
+![image](http://musicdata.baidu.com/data2/pic/246586174/246586174.jpg)
 
 ###三、如何创建 Dispatch Queue
 1、dispatch_queue_create 函数生成 Dispatch Queue。
