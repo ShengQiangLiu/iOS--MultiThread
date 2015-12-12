@@ -1,6 +1,8 @@
 ###一、Dispatch Queue 概念
 Dispatch Queue 是执行处理的等待队列。可以将想执行的处理追加到 Dispatch Queue 中，Dispatch Queue 按照追加的顺序（FIFO）执行处理。
 
+![image](/O2O.jpg)
+
 ###二、两种 Dispatch Queue 
 Serial Dispatch Queue 串行分发队列
 Concurrent Dispatch Queue 并行分发队列
