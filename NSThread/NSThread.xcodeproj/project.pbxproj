@@ -299,6 +299,7 @@
 				76730E621C1D0B1000435238 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
