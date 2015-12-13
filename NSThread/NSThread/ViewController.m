@@ -55,7 +55,6 @@ int i = 0;
     [self.button2 addTarget:self action:@selector(button2Click:) forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:self.button2];
     
-    
 }
 
 /**
