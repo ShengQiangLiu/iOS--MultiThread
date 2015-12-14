@@ -13,7 +13,8 @@
 		76026E141C1DD9B100EF0B78 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 76026E121C1DD9B100EF0B78 /* Main.storyboard */; };
 		76026E161C1DD9B100EF0B78 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 76026E151C1DD9B100EF0B78 /* Assets.xcassets */; };
 		76026E191C1DD9B100EF0B78 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 76026E171C1DD9B100EF0B78 /* LaunchScreen.storyboard */; };
-		76026E221C1DD9D500EF0B78 /* MySessionDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 76026E211C1DD9D500EF0B78 /* MySessionDelegate.m */; settings = {ASSET_TAGS = (); }; };
+		76026E221C1DD9D500EF0B78 /* MySessionDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 76026E211C1DD9D500EF0B78 /* MySessionDelegate.m */; };
+		8402276A1C1F02AA0083FEA9 /* MyURLSessionManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 840227691C1F02AA0083FEA9 /* MyURLSessionManager.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -29,6 +30,8 @@
 		76026E1A1C1DD9B100EF0B78 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		76026E201C1DD9D500EF0B78 /* MySessionDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MySessionDelegate.h; sourceTree = "<group>"; };
 		76026E211C1DD9D500EF0B78 /* MySessionDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MySessionDelegate.m; sourceTree = "<group>"; };
+		840227681C1F02AA0083FEA9 /* MyURLSessionManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyURLSessionManager.h; sourceTree = "<group>"; };
+		840227691C1F02AA0083FEA9 /* MyURLSessionManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyURLSessionManager.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -65,6 +68,8 @@
 				76026E0D1C1DD9B100EF0B78 /* AppDelegate.m */,
 				76026E0F1C1DD9B100EF0B78 /* ViewController.h */,
 				76026E101C1DD9B100EF0B78 /* ViewController.m */,
+				840227681C1F02AA0083FEA9 /* MyURLSessionManager.h */,
+				840227691C1F02AA0083FEA9 /* MyURLSessionManager.m */,
 				76026E201C1DD9D500EF0B78 /* MySessionDelegate.h */,
 				76026E211C1DD9D500EF0B78 /* MySessionDelegate.m */,
 				76026E121C1DD9B100EF0B78 /* Main.storyboard */,
@@ -159,6 +164,7 @@
 				76026E0E1C1DD9B100EF0B78 /* AppDelegate.m in Sources */,
 				76026E0B1C1DD9B100EF0B78 /* main.m in Sources */,
 				76026E221C1DD9D500EF0B78 /* MySessionDelegate.m in Sources */,
+				8402276A1C1F02AA0083FEA9 /* MyURLSessionManager.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -305,6 +311,7 @@
 				76026E1F1C1DD9B100EF0B78 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
