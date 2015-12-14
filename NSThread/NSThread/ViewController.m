@@ -56,6 +56,8 @@ int i = 0;
     [self.view addSubview:self.button2];
     
 }
+- (IBAction)dispatchSemaphoreBtnClick:(UIButton *)sender {
+}
 
 /**
  *  NSThread 创建线程的几种方式
