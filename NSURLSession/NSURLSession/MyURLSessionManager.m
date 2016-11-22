@@ -28,9 +28,12 @@
 {
     NSURL *myurl = [NSURL URLWithString:url];
     NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:myurl];
-    request.HTTPMethod = @"GET";
-    NSURLSessionDataTask *dataTask = [self.session dataTaskWithRequest:request];
+//    request.HTTPMethod = @"GET";
     
+//    NSURLSessionDownloadTask *downloadTask = [self.session downloadTaskWithRequest:request];
+//    [downloadTask resume];
+    
+    NSURLSessionDataTask *dataTask = [self.session dataTaskWithRequest:request];
     [dataTask resume];
     
 }
@@ -62,7 +65,6 @@ willPerformHTTPRedirection:(NSHTTPURLResponse *)response
  completionHandler:(void (^)(NSURLRequest * __nullable))completionHandler
 {
     NSLog(@"%s", __FUNCTION__);
-    NSLog(@"%@", response);
 
 }
 
@@ -93,17 +95,15 @@ totalBytesExpectedToSend:(int64_t)totalBytesExpectedToSend
 - (void)URLSession:(NSURLSession *)session task:(NSURLSessionTask *)task
 didCompleteWithError:(nullable NSError *)error
 {
-    NSLog(@"%s", __FUNCTION__);
-
+    NSLog(@"%s %@", __FUNCTION__, error);
 }
 
-#pragma mark - NSURLSessionDataTaskDelegate
+#pragma mark - NSURLSessionDataDelegate
 - (void)URLSession:(NSURLSession *)session dataTask:(NSURLSessionDataTask *)dataTask
 didReceiveResponse:(NSURLResponse *)response
  completionHandler:(void (^)(NSURLSessionResponseDisposition disposition))completionHandler
 {
     NSLog(@"%s", __FUNCTION__);
-    NSLog(@"%@", response);
 
 }
 
@@ -140,6 +140,7 @@ didBecomeStreamTask:(NSURLSessionStreamTask *)streamTask
 - (void)URLSession:(NSURLSession *)session downloadTask:(NSURLSessionDownloadTask *)downloadTask
 didFinishDownloadingToURL:(NSURL *)location
 {
+    
     NSLog(@"%s", __FUNCTION__);
 
 }
@@ -149,6 +150,8 @@ didFinishDownloadingToURL:(NSURL *)location
  totalBytesWritten:(int64_t)totalBytesWritten
 totalBytesExpectedToWrite:(int64_t)totalBytesExpectedToWrite
 {
+    double currentProgress = totalBytesWritten / (double)totalBytesExpectedToWrite;
+    NSLog(@"%lf", currentProgress);
     NSLog(@"%s", __FUNCTION__);
 
 }

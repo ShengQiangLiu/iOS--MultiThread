@@ -17,6 +17,41 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view, typically from a nib.
+    
+    
+    
+//    dispatch_queue_t globalDispatchQueueDefault = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0);
+//    dispatch_queue_t myConcurrentDispatchQueue = dispatch_queue_create("com.example.gcd", DISPATCH_QUEUE_CONCURRENT);
+//
+//    dispatch_async(myConcurrentDispatchQueue, ^{
+//       dispatch_sync(dispatch_get_main_queue(), ^{
+//           NSLog(@"1");
+//       });
+//        dispatch_sync(dispatch_get_main_queue(), ^{
+//            NSLog(@"2");
+//
+//        });
+//        dispatch_sync(dispatch_get_main_queue(), ^{
+//            NSLog(@"3");
+//
+//        });
+//        dispatch_sync(dispatch_get_main_queue(), ^{
+//            NSLog(@"4");
+//
+//        });
+//        dispatch_sync(dispatch_get_main_queue(), ^{
+//            NSLog(@"5");
+//
+//        });
+//    });
+    
+    
+//    dispatch_sync(globalDispatchQueueDefault, ^{
+//       dispatch_async(dispatch_get_main_queue(), ^{
+//           
+//       });
+//    });
+//    
 }
 
 - (IBAction)dispatchQueueBtnClick:(UIButton *)sender {
@@ -138,23 +173,50 @@ dispatch_time_t getDispatchTimeByDate(NSDate *date)
     // 创建一个组队列
     dispatch_group_t group = dispatch_group_create();
     
+    /**
+     组里面如果是执行异步线程，需要加上 dispatch_group_enter()、dispatch_group_leave()，这样确保所有线程执行完才收到通知。
+     如果是执行同步线程，不需要添加。
+     */
     dispatch_group_async(group, queue, ^{
-        NSLog(@"blk0");
+        
+        dispatch_group_enter(group);
+        
+        dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+            NSLog(@"blk0");
+            
+            dispatch_group_leave(group);
+        });
     });
     
     dispatch_group_async(group, queue, ^{
-        NSLog(@"blk1");
+        
+        dispatch_group_enter(group);
+
+        dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+            NSLog(@"blk1");
+            
+            dispatch_group_leave(group);
+
+        });
     });
     
     dispatch_group_async(group, queue, ^{
-        NSLog(@"blk2");
+        
+        dispatch_group_enter(group);
+
+        dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+            NSLog(@"blk2");
+            
+            dispatch_group_leave(group);
+
+        });
     });
     
     /*
      dispatch_group_notify 函数监听dispatch group，全部执行完成之后，执行回调处理
      */
     dispatch_group_notify(group, dispatch_get_main_queue(), ^{
-        NSLog(@"done");
+        NSLog(@"------------done");
     });
 
 }
