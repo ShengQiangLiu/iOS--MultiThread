@@ -78,6 +78,30 @@
 //        dispatch_semaphore_signal(semaphore);
 //    });
     
+    // 创建并设置信号量
+    dispatch_semaphore_t semaphore = dispatch_semaphore_create(1);
+    
+    // 线程 A
+    dispatch_async(dispatch_get_main_queue(), ^{
+        dispatch_semaphore_wait(semaphore, DISPATCH_TIME_FOREVER);
+        
+        NSLog(@"线程 A2 。");
+        [NSThread sleepForTimeInterval:3];
+        
+        dispatch_semaphore_signal(semaphore);
+    });
+    
+    
+    // 线程 B
+    dispatch_async(dispatch_get_main_queue(), ^{
+        dispatch_semaphore_wait(semaphore, DISPATCH_TIME_FOREVER);
+        
+        NSLog(@"线程 B2 。");
+        [NSThread sleepForTimeInterval:3];
+        
+        dispatch_semaphore_signal(semaphore);
+    });
+    
     /**
      使用POSIX（条件锁）创建锁
      */
@@ -123,27 +147,27 @@
     /**
      使用 OSSpinLock 创建锁
      */
-    __block OSSpinLock spinlock = OS_SPINLOCK_INIT;
-    // 线程 A
-    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
-        OSSpinLockLock(&spinlock);
-        
-        NSLog(@"线程 A4 。");
-        [NSThread sleepForTimeInterval:3];
-
-        OSSpinLockUnlock(&spinlock);
-    });
-
-
-    // 线程 B
-    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
-        OSSpinLockLock(&spinlock);
-        
-        NSLog(@"线程 B4 。");
-        [NSThread sleepForTimeInterval:3];
-
-        OSSpinLockUnlock(&spinlock);
-    });
+//    __block OSSpinLock spinlock = OS_SPINLOCK_INIT;
+//    // 线程 A
+//    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+//        OSSpinLockLock(&spinlock);
+//        
+//        NSLog(@"线程 A4 。");
+//        [NSThread sleepForTimeInterval:3];
+//
+//        OSSpinLockUnlock(&spinlock);
+//    });
+//
+//
+//    // 线程 B
+//    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+//        OSSpinLockLock(&spinlock);
+//        
+//        NSLog(@"线程 B4 。");
+//        [NSThread sleepForTimeInterval:3];
+//
+//        OSSpinLockUnlock(&spinlock);
+//    });
     
 }
 
